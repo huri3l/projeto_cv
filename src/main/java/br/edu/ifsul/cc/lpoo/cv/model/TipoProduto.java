@@ -8,6 +8,6 @@ package br.edu.ifsul.cc.lpoo.cv.model;
  *
  * @author huriel
  */
-public class TipoProduto {
-    
+public enum TipoProduto {
+    MEDICAMENTO, SESSOA_FISIOTERAPIA, SESSAO_ADESTRAMENTO, ATENDIMENTO_AMBULATORIAL, CONSULTA, CONSULTA_REVISAO;
 }
