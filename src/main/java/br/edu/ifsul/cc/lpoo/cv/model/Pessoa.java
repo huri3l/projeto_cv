@@ -50,6 +50,10 @@ public class Pessoa implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar data_nascimento;
     
+    @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar data_cadastro;
+    
     @Column(nullable = true)
     private String cep;
     
@@ -201,5 +205,19 @@ public class Pessoa implements Serializable {
      */
     public void setComplemento(String complemento) {
         this.complemento = complemento;
+    }
+
+    /**
+     * @return the data_cadastro
+     */
+    public Calendar getData_cadastro() {
+        return data_cadastro;
+    }
+
+    /**
+     * @param data_cadastro the data_cadastro to set
+     */
+    public void setData_cadastro(Calendar data_cadastro) {
+        this.data_cadastro = data_cadastro;
     }
 }

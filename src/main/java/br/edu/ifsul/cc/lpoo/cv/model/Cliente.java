@@ -20,14 +20,14 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "tb_cliente")
-@DiscriminatorValue("med")
+@DiscriminatorValue("cli")
 public class Cliente extends Pessoa {
     
     @Column(nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar data_ultima_visita;
     
-    @OneToMany(mappedBy = "pet")
+    @OneToMany(mappedBy = "cliente")
     private List<Pet> pets;
     
     public Cliente() {
