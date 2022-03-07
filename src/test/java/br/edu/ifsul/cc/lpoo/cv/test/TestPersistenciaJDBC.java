@@ -4,7 +4,9 @@
  */
 package br.edu.ifsul.cc.lpoo.cv.test;
 
+import br.edu.ifsul.cc.lpoo.cv.model.Cargo;
 import br.edu.ifsul.cc.lpoo.cv.model.Fornecedor;
+import br.edu.ifsul.cc.lpoo.cv.model.Funcionario;
 import br.edu.ifsul.cc.lpoo.cv.model.Medico;
 import br.edu.ifsul.cc.lpoo.cv.model.Pessoa;
 import br.edu.ifsul.cc.lpoo.cv.model.dao.PersistenciaJDBC;
@@ -50,7 +52,7 @@ public class TestPersistenciaJDBC {
         }
     }
 
-    // @Test
+    @Test
     public void testPersistenciaFornecedor() throws Exception {
         PersistenciaJDBC persistencia = new PersistenciaJDBC();
 
@@ -81,16 +83,16 @@ public class TestPersistenciaJDBC {
                 DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                 Calendar dtNascimento = Calendar.getInstance();
 
-                forn.setCpf("123.123.123-12");
+                forn.setCpf("234.234.234-23");
                 forn.setNome("Huriel Ferreira Lopes");
                 forn.setEmail("huriel.lopes@teste.com");
-                forn.setSenha("123123");
+                forn.setSenha("234234");
 
                 dtNascimento.setTime(formatter.parse("06/04/2002"));
                 forn.setData_nascimento(dtNascimento);
 
-                forn.setNumero_celular("54 99999-9999");
-                forn.setRg("1111111111");
+                forn.setNumero_celular("54 77777-7777");
+                forn.setRg("2222222222");
                 forn.setCep("99999-999");
                 forn.setEndereco("Rua Alferes Rodrigues, 137");
                 forn.setComplemento("Casa");
@@ -121,8 +123,8 @@ public class TestPersistenciaJDBC {
             System.out.println("A conexao com o Banco de Dados nao foi estabelecida.");
         }
     }
-    
-    @Test
+
+    // @Test
     public void testPersistenciaMedico() throws Exception {
         PersistenciaJDBC persistencia = new PersistenciaJDBC();
 
@@ -190,5 +192,57 @@ public class TestPersistenciaJDBC {
         } else {
             System.out.println("A conexao com o Banco de Dados nao foi estabelecida.");
         }
+    }
+
+    // @Test
+    public void testPersistenciaFuncionario() throws Exception {
+        PersistenciaJDBC persistencia = new PersistenciaJDBC();
+
+        if (persistencia.conexaoAberta()) {
+
+            Funcionario fun = new Funcionario();
+
+            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            Calendar dtNascimento = Calendar.getInstance();
+
+            fun.setCpf("123.123.123-12");
+            fun.setNome("Huriel Ferreira Lopes");
+            fun.setEmail("huriel.lopes@email.com");
+            fun.setSenha("123123");
+
+            dtNascimento.setTime(formatter.parse("06/04/2002"));
+            fun.setData_nascimento(dtNascimento);
+
+            fun.setNumero_celular("54 99999-9999");
+            fun.setRg("1231231231");
+            fun.setCep("999999-099");
+            fun.setEndereco("Rua de Exemplo, 123");
+            fun.setComplemento("Casa");
+            fun.setNumero_ctps("123.12345.12-1");
+            fun.setNumero_pis("123.12345.12-1");
+            fun.setCargo(Cargo.ADESTRADOR);
+            persistencia.persist(fun);
+        }
+
+        persistencia.fecharConexao();
+    }
+    
+    // @Test
+    public void testDoLogin() throws Exception {
+        PersistenciaJDBC persistencia = new PersistenciaJDBC();
+
+        if (persistencia.conexaoAberta()) {
+
+            Funcionario fun = persistencia.doLogin("123.123.123-12", "123123");
+            
+            if(fun != null) {
+                System.out.println("Usuário logado com sucesso!");
+            }
+            else {
+                System.out.println("Erro ao logar! Verifique as credenciais!");
+            }
+        }
+
+        persistencia.fecharConexao();
     }
 }

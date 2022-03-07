@@ -5,6 +5,7 @@
 package br.edu.ifsul.cc.lpoo.cv.model.dao;
 
 import br.edu.ifsul.cc.lpoo.cv.model.Fornecedor;
+import br.edu.ifsul.cc.lpoo.cv.model.Funcionario;
 import br.edu.ifsul.cc.lpoo.cv.model.Medico;
 import br.edu.ifsul.cc.lpoo.cv.model.Pessoa;
 import java.util.List;
@@ -61,6 +62,16 @@ public class PersistenciaJPA implements InterfacePersistencia {
 
     @Override
     public List<Medico> listMedicos() throws Exception {
+        throw new UnsupportedOperationException("Funcionalidade indisponivel no momento.");
+    }
+
+    @Override
+    public Funcionario doLogin(String nickname, String senha) throws Exception {
+        throw new UnsupportedOperationException("Funcionalidade indisponivel no momento.");
+    }
+
+    @Override
+    public List<Funcionario> listFuncionarios() throws Exception {
         throw new UnsupportedOperationException("Funcionalidade indisponivel no momento.");
     }
 }

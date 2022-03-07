@@ -10,5 +10,5 @@ package br.edu.ifsul.cc.lpoo.cv.model;
  * @author huriel
  */
 public enum Cargo {
-    ADESTRADOR, ATENDENTE, AXUILIAR_VETERINARIO;
+    ADESTRADOR, ATENDENTE, AUXILIAR_VETERINARIO;
 }
